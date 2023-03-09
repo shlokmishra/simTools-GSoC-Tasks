@@ -1,12 +1,10 @@
 # Define the simulation function for AR(1) model
 ar1_sim <- function(n, phi, sigma) {
-  # Set initial value
-  x <- rnorm(1)
-  # Simulate AR(1) model
+  x <- numeric(length = n)
+  x[1] <- rnorm(1)
   for (i in 2:n) {
     x[i] <- phi * x[i - 1] + rnorm(1, mean = 0, sd = sigma)
   }
-  # Return simulated time series
   return(x)
 }
 
