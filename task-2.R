@@ -25,12 +25,13 @@ metropolisHastings <- function(n, mu, sigma) {
 # Example usage
 set.seed(1)
 n <- 1e4
-mu <- c(1, 40, 13)
+mu <- c(1, 2, 3)
 sigma <- matrix(c(2, 0.5, 0.5, 0.5, 3, 0.2, 0.5, 0.2, 1), nrow = 3)
 result <- metropolisHastings(n, mu, sigma)
 accept.rate <- result$accept.rate
 chain <- result$chain
 
-plot(mvrnorm(n,mu,sigma,tol = 1e-6, empirical = FALSE, EISPACK = FALSE ), pch = 16)
+plot(mvrnorm(n,mu,sigma,tol = 1e-6, empirical = FALSE, EISPACK = FALSE ), pch = 4, ylab = "", xlab = "")
 points(chain, col = "blue")
-legend("bottomleft",legend =c("Target", "Sampled"), pch = c(16,1), col = c("black", "blue"))
+legend("bottomleft",legend =c("Target", "Sampled"), pch = c(4,1), col = c("black", "blue"))
+title(main = "Samples from 3-variate Normal distribution", xlab = " ", ylab = " ")
